@@ -1,0 +1,75 @@
+---
+description: APPLY when INTEGRATING to understand available MCP server capabilities and configurations
+globs: .cursor/mcp.json
+alwaysApply: true
+---
+
+# MCP Integration Capabilities
+
+## Context
+MCP (Model Context Protocol) servers extend Cursor's capabilities by:
+- Providing external data access
+- Enabling tool integrations
+- Supporting both local and remote contexts
+
+## Requirements
+- Configure MCP servers in `.cursor/mcp.json` or `~/.cursor/mcp.json`
+- Choose appropriate transport type (stdio or SSE)
+- Set required environment variables for authentication
+- Implement proper error handling
+- Monitor MCP server health
+
+## Examples
+<example>
+// Local stdio MCP server configuration
+{
+  "mcpServers": {
+    "nuxt-db": {
+      "command": "npx",
+      "args": ["-y", "nuxt-mcp-db"],
+      "env": {
+        "DB_URL": "postgresql://localhost:5432/mydb"
+      }
+    }
+  }
+}
+
+// Remote SSE MCP server
+{
+  "mcpServers": {
+    "team-api": {
+      "url": "https://api.example.com/mcp/sse",
+      "env": {
+        "API_KEY": "${MCP_API_KEY}"
+      }
+    }
+  }
+}
+</example>
+
+<example type="invalid">
+// Missing required env variables
+{
+  "mcpServers": {
+    "nuxt-db": {
+      "command": "npx",
+      "args": ["-y", "nuxt-mcp-db"]
+    }
+  }
+}
+
+// Invalid transport configuration
+{
+  "mcpServers": {
+    "api": {
+      "command": "http://api.example.com"
+    }
+  }
+}
+</example>
+
+## Critical Rules
+- ALWAYS use environment variables for sensitive data
+- NEVER commit API keys or credentials to version control
+- Choose stdio for local development, SSE for team sharing
+- Limit MCP servers to 40 tools maximum for optimal performance 

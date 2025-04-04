@@ -1,0 +1,59 @@
+---
+description: APPLY when DEVELOPING to ensure proper Nuxt-Cursor integration and MCP usage
+globs: **/*
+alwaysApply: true
+---
+
+# Nuxt-Cursor Project Purpose
+
+## Context
+This project enhances Cursor's capabilities with Nuxt applications by:
+- Providing comprehensive rules for Nuxt development
+- Integrating MCP servers for enhanced context
+- Establishing best practices for Nuxt-Cursor workflows
+
+## Requirements
+- Follow all Nuxt-specific rules for components, TypeScript, and SSR
+- Utilize MCP servers for enhanced project context
+- Maintain rule documentation for Nuxt best practices
+- Implement proper type definitions and API integrations
+- Keep rules synchronized with Nuxt and Cursor updates
+
+## Examples
+<example>
+// Proper MCP integration with type support
+const { data } = await useAsyncData('users', () => 
+  $fetch('/api/users')
+)
+
+// Using rules for component structure
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import type { User } from '~/types'
+
+interface Props {
+  user: User
+}
+
+defineProps<Props>()
+</script>
+</example>
+
+<example type="invalid">
+// Missing type definitions and improper structure
+const data = await $fetch('/api/users') as any
+
+// Not following component rules
+export default {
+  props: ['user'],
+  setup(props) {
+    // ...
+  }
+}
+</example>
+
+## Critical Rules
+- ALWAYS follow Nuxt-specific rules for components and TypeScript
+- NEVER bypass type checking or MCP integration capabilities
+- Maintain up-to-date documentation for all rules and MCP features
+- Keep rules synchronized with latest Nuxt and Cursor versions 
