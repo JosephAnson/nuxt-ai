@@ -4,7 +4,7 @@ import type { McpToolContext, ModuleOptions } from './types'
 import { addVitePlugin, defineNuxtModule } from '@nuxt/kit'
 import { ViteMcp } from 'vite-plugin-mcp'
 import { version } from '../package.json'
-import { generateNuxtRules } from './rules/generate'
+import { generateRules } from './rules'
 import { toolsDocs } from './tools/docs'
 import { toolsNuxtDotComInfo } from './tools/nuxt-dot-com'
 import { toolsNuxtRuntime } from './tools/runtime'
@@ -23,7 +23,7 @@ export default defineNuxtModule<ModuleOptions>({
     const nitro = promiseWithResolve<Nitro>()
 
     nuxt.hook('imports:context', (_unimport) => {
-      unimport.resolve(_unimport)
+      unimport.resolve(_unimport as any)
     })
     nuxt.hook('nitro:init', (_nitro) => {
       nitro.resolve(_nitro)
@@ -48,7 +48,7 @@ export default defineNuxtModule<ModuleOptions>({
           mcp,
         }
 
-        generateNuxtRules(context)
+        generateRules(context)
 
         toolsNuxtRuntime(context)
         toolsNuxtDotComInfo(context)

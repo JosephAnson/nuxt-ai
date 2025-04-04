@@ -1,0 +1,3 @@
+defineEventHandler(() => {
+  return 'Response'
+})
