@@ -13,5 +13,9 @@
     "verbatimModuleSyntax": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    "**/good-examples",
+    "**/bad-examples"
+  ]
 }

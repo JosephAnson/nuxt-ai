@@ -19,6 +19,12 @@ export async function toolsDocs({ mcp }: McpToolContext, options: ModuleOptions)
     'nuxt-ui': {
       url: 'github:nuxt/ui/tree/v3/docs/content',
     },
+    'h3': {
+      url: 'github:unjs/h3/tree/main/docs',
+    },
+    'nitro': {
+      url: 'github:nitrojs/nitro/tree/v3/docs',
+    },
     ...options.additionalDocs,
   }
 

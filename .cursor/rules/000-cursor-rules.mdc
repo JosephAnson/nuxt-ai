@@ -43,23 +43,12 @@ Invalid concise example with explanation
 - Path: `.cursor/rules/`
 - Extension: `.mdc`
 
-### Naming Convention
-PREFIX-name.mdc where PREFIX is:
-- 0XX: Core standards
-- 1XX: Tool configs
-- 3XX: Testing standards
-- 1XXX: Language rules
-- 2XXX: Framework rules
-- 8XX: Workflows
-- 9XX: Templates
-- _name.mdc: Private rules
-
 ### Glob Pattern Examples
 Common glob patterns for different rule types:
 - Core standards: .cursor/rules/*.mdc
 - Language rules: src/**/*.{js,ts}
 - Testing standards: **/*.test.{js,ts}
-- Vue components: src/components/**/*.vue
+- Vue components: app/components/**/*.vue
 - Documentation: docs/**/*.md
 - Configuration files: *.config.{js,json}
 - Build artifacts: dist/**/*

@@ -6,4 +6,7 @@ export default antfu(
     type: 'lib',
     pnpm: true,
   },
+  {
+    ignores: ['**/good-examples', '**/bad-examples'],
+  },
 )
