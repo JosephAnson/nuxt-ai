@@ -1,18 +1,12 @@
-/// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import type { RuleOptions } from '../../types'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generateRuntimeRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.ts'],
+  })
 
-export function generateRuntimeRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'runtime',
     name: 'Nuxt Runtime Configuration',
     description: 'Follow best practices for runtime configuration in Nuxt applications',
@@ -34,8 +28,8 @@ export function generateRuntimeRules(generator: RuleGenerator): void {
       'Document configuration options',
       'Validate configuration values',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'NEVER expose sensitive data client-side',
       'Use runtimeConfig for environment variables',
@@ -44,5 +38,5 @@ export function generateRuntimeRules(generator: RuleGenerator): void {
       'Implement proper security measures',
       'Validate configuration values',
     ],
-  })
+  }
 }

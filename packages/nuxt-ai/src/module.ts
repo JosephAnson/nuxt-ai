@@ -13,10 +13,10 @@ import { toolsScaffold } from './tools/scaffold'
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt-ai',
-    configKey: 'nuxtAi',
+    configKey: 'ai',
   },
   defaults: {
-    updateCursorMcpJson: true,
+    client: 'cursor',
   },
   async setup(options, nuxt) {
     const unimport = promiseWithResolve<Unimport>()
@@ -32,7 +32,7 @@ export default defineNuxtModule<ModuleOptions>({
     addVitePlugin(ViteMcp({
       port: nuxt.options.devServer.port,
       updateCursorMcpJson: {
-        enabled: !!options.updateCursorMcpJson,
+        enabled: options?.client === 'cursor',
         serverName: 'nuxt',
       },
       mcpServerInfo: {
@@ -48,7 +48,7 @@ export default defineNuxtModule<ModuleOptions>({
           mcp,
         }
 
-        generateRules(context)
+        generateRules(context, options)
 
         toolsNuxtRuntime(context)
         toolsNuxtDotComInfo(context)

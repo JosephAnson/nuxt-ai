@@ -1,18 +1,13 @@
+import type { RuleOptions } from '../../types'
 /// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generateServerRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.ts'],
+  })
 
-export function generateServerRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'server',
     name: 'Nuxt Server Routes and Middleware',
     description: 'Follow best practices for server routes, API endpoints, and middleware in Nuxt using h3',
@@ -40,8 +35,8 @@ export function generateServerRules(generator: RuleGenerator): void {
       'Implement proper request body size limits',
       'Add proper content-type headers',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS use defineEventHandler for route handlers',
       'ALWAYS use H3 utilities for request handling (getQuery, readBody, etc.)',
@@ -54,5 +49,5 @@ export function generateServerRules(generator: RuleGenerator): void {
       'NEVER use Node.js req/res objects directly',
       'NEVER expose sensitive data in error messages',
     ],
-  })
+  }
 }

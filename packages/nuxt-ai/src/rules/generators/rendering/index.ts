@@ -1,20 +1,11 @@
 /// <reference types="vite/client" />
 import type { NuxtOptions } from '@nuxt/schema'
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import type { RuleOptions } from '../../types'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.vue'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.vue'],
-})
-
-export function generateRenderingRules(nuxt: NuxtOptions, generator: RuleGenerator): void {
+export function generateRenderingRules(nuxt: NuxtOptions): RuleOptions {
   if (nuxt.ssr) {
-    generator.createRuleFile({
+    return {
       fileName: 'nuxt-ssr',
       name: 'Nuxt SSR Compatibility',
       description: 'Ensure components work correctly in SSR environment',
@@ -36,8 +27,12 @@ export function generateRenderingRules(nuxt: NuxtOptions, generator: RuleGenerat
         'Handle loading states',
         'Use proper TypeScript types',
       ],
-      goodExamples: Object.values(goodExamples),
-      badExamples: Object.values(badExamples),
+      goodExamples: Object.values(readExamples(__dirname, {
+        extensions: ['.ts', '.vue'],
+      }).good),
+      badExamples: Object.values(readExamples(__dirname, {
+        extensions: ['.ts', '.vue'],
+      }).bad),
       criticalRules: [
         'NEVER access browser APIs without environment checks',
         'Use proper data fetching with useAsyncData/useFetch',
@@ -46,10 +41,10 @@ export function generateRenderingRules(nuxt: NuxtOptions, generator: RuleGenerat
         'Make components isomorphic',
         'Handle all rendering states',
       ],
-    })
+    }
   }
   else {
-    generator.createRuleFile({
+    return {
       fileName: 'nuxt-csr',
       name: 'Nuxt CSR Patterns',
       description: 'Follow client-side rendering best practices in Nuxt',
@@ -71,8 +66,12 @@ export function generateRenderingRules(nuxt: NuxtOptions, generator: RuleGenerat
         'Use proper event handling',
         'Clean up resources properly',
       ],
-      goodExamples: Object.values(goodExamples),
-      badExamples: Object.values(badExamples),
+      goodExamples: Object.values(readExamples(__dirname, {
+        extensions: ['.ts', '.vue'],
+      }).good),
+      badExamples: Object.values(readExamples(__dirname, {
+        extensions: ['.ts', '.vue'],
+      }).bad),
       criticalRules: [
         'ALWAYS clean up event listeners and subscriptions',
         'Use proper lifecycle hooks for browser APIs',
@@ -81,6 +80,6 @@ export function generateRenderingRules(nuxt: NuxtOptions, generator: RuleGenerat
         'Clean up resources properly',
         'Handle all rendering states',
       ],
-    })
+    }
   }
 }

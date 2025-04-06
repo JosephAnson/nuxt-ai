@@ -41,3 +41,10 @@ export function readFiles(dir: string, options: ReadFilesOptions = {}): string[]
     return []
   }
 }
+
+export function readExamples(baseDir: string, options: { extensions?: string[] } = {}) {
+  return {
+    good: readFiles(join(baseDir, 'good-examples'), options),
+    bad: readFiles(join(baseDir, 'bad-examples'), options),
+  }
+}

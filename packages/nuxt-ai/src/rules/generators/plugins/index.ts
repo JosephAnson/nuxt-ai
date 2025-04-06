@@ -1,18 +1,12 @@
-/// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import type { RuleOptions } from '../../types'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generatePluginRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.ts'],
+  })
 
-export function generatePluginRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'plugins',
     name: 'Nuxt Plugins',
     description: 'Follow best practices for creating and using plugins in Nuxt applications',
@@ -34,8 +28,8 @@ export function generatePluginRules(generator: RuleGenerator): void {
       'Implement proper cleanup in plugins',
       'Use composables when appropriate',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS use defineNuxtPlugin',
       'Use proper TypeScript types',
@@ -44,5 +38,5 @@ export function generatePluginRules(generator: RuleGenerator): void {
       'Handle SSR properly',
       'Avoid global state mutations',
     ],
-  })
+  }
 }

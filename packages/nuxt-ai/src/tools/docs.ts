@@ -25,7 +25,7 @@ export async function toolsDocs({ mcp }: McpToolContext, options: ModuleOptions)
     'nitro': {
       url: 'github:nitrojs/nitro/tree/v3/docs',
     },
-    ...options.additionalDocs,
+    ...options.mcp?.additionalDocs,
   }
 
   // Helper function to download and get docs directory

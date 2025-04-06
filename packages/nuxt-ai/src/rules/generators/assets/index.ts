@@ -1,18 +1,12 @@
-/// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import type { RuleOptions } from '../../types'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generateAssetsRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.ts'],
+  })
 
-export function generateAssetsRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'assets',
     name: 'Nuxt Assets and Static Files',
     description: 'Follow best practices for handling assets, images, fonts, and styles in Nuxt',
@@ -35,8 +29,8 @@ export function generateAssetsRules(generator: RuleGenerator): void {
       'Use proper asset optimization',
       'Handle static files correctly',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS use Nuxt Image for image optimization',
       'Implement proper font loading strategies',
@@ -45,5 +39,5 @@ export function generateAssetsRules(generator: RuleGenerator): void {
       'Optimize assets for production',
       'Use proper static file handling',
     ],
-  })
+  }
 }

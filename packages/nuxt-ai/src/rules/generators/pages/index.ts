@@ -1,18 +1,12 @@
-/// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import type { RuleOptions } from '../../types'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generatePagesRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.vue'],
+  })
 
-export function generatePagesRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'pages',
     name: 'Nuxt Pages and Routing',
     description: 'Follow best practices for pages, routing, and navigation in Nuxt',
@@ -35,8 +29,8 @@ export function generatePagesRules(generator: RuleGenerator): void {
       'Handle route validation',
       'Implement middleware when needed',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS use file-based routing structure',
       'Implement proper page meta and SEO tags',
@@ -45,5 +39,5 @@ export function generatePagesRules(generator: RuleGenerator): void {
       'Implement proper error handling',
       'Handle loading states properly',
     ],
-  })
+  }
 }

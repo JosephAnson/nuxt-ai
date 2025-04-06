@@ -1,18 +1,13 @@
+import type { RuleOptions } from '../../types'
 /// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generateStoreRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.ts'],
+  })
 
-export function generateStoreRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'stores',
     name: 'Nuxt Store Management',
     description: 'Follow best practices for state management using Pinia in Nuxt applications',
@@ -34,8 +29,8 @@ export function generateStoreRules(generator: RuleGenerator): void {
       'Use composables when appropriate',
       'Handle SSR properly',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS use Pinia for state management',
       'Use proper TypeScript types',
@@ -44,5 +39,5 @@ export function generateStoreRules(generator: RuleGenerator): void {
       'Implement proper error handling',
       'Handle SSR properly',
     ],
-  })
+  }
 }

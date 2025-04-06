@@ -1,18 +1,13 @@
+import type { RuleOptions } from '../../types'
 /// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.vue'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.vue'],
-})
+export function generateLayoutRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.vue'],
+  })
 
-export function generateLayoutRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'layouts',
     name: 'Nuxt Layouts',
     description: 'Follow best practices for creating and using layouts in Nuxt applications',
@@ -34,8 +29,8 @@ export function generateLayoutRules(generator: RuleGenerator): void {
       'Implement proper error boundaries',
       'Use proper TypeScript types',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS use script setup and Composition API',
       'Use proper navigation components',
@@ -44,5 +39,5 @@ export function generateLayoutRules(generator: RuleGenerator): void {
       'Handle layout-specific state with composables',
       'Implement proper error handling',
     ],
-  })
+  }
 }

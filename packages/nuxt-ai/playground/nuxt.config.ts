@@ -5,4 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: '2025-03-11',
   debug: false,
+  ai: {
+    client: 'claude',
+  },
 })

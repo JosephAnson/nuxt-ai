@@ -18,10 +18,40 @@ export type Documentation = Record<string, {
 
 export interface ModuleOptions {
   /**
-   * Update MCP url to `.cursor/mcp.json` automatically
+   * The client to use for the project
    *
-   * @default true
+   * @default 'cursor'
    */
-  updateCursorMcpJson?: boolean
-  additionalDocs?: Documentation
+  client?: 'cursor' | 'claude'
+
+  options?: {
+    /**
+     * Whether to generate rules for the project
+     *
+     * @default true
+     */
+    rules?: boolean
+
+    mcp?: {
+      /**
+       * Whether to run mcp server to help with creating documentation
+       *
+       * @default true
+       */
+      documentation?: {
+        enabled: boolean
+        path: string
+      }
+    }
+  }
+
+  // Module options (e.g., Vercel AI provider config)
+  keys: {
+    openaiApiKey: string
+  }
+
+  /**
+   * Allows you to enable MCP servers from the plugin
+   */
+  mcpServers: string[] // Enabling tools from the plugin
 }

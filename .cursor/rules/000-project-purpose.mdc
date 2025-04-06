@@ -12,7 +12,7 @@ Its core goals are:
 - Providing a seamless installation and setup experience for developers.
 - Offering auto-imports for Vercel AI SDK composables and utilities.
 - Bundling development assistance tools, including:
-    - Pre-defined rules compatible with .cursor/rules/* (`.mdc`), Claude (`.md`) and other AI assistants.
+    - Pre-defined rules compatible with .cursor/rules/* (`.mdc`), Claude (`.md`) and other AI clients.
     - A built-in MCP (Model Context Protocol) server with tools specifically designed to aid Nuxt AI development.
 - Implementing an extensible MCP plugin system, allowing other mcp servers to be integrated to nuxt-ai (e.g., a separate documentation generation module).
 

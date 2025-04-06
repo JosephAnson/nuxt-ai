@@ -1,18 +1,12 @@
-/// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import type { RuleOptions } from '../../types'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generateComposablesRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.ts'],
+  })
 
-export function generateComposablesRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'composables',
     name: 'Nuxt Composables Best Practices',
     description: 'Follow best practices for creating and using composables in Nuxt',
@@ -30,8 +24,8 @@ export function generateComposablesRules(generator: RuleGenerator): void {
       'Implement proper disposal of resources',
       'Consider using async composables with useAsyncData',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS use "use" prefix for composable names',
       'Use useState for SSR-compatible shared state',
@@ -40,5 +34,5 @@ export function generateComposablesRules(generator: RuleGenerator): void {
       'Return readonly refs when state should be immutable',
       'Document composable parameters and return types',
     ],
-  })
+  }
 }

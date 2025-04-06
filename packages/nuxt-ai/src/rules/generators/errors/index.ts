@@ -1,18 +1,12 @@
-/// <reference types="vite/client" />
-import type { RuleGenerator } from '../../utils/base'
-import { join } from 'pathe'
-import { readFiles } from '../../utils/readFiles'
+import type { RuleOptions } from '../../types'
+import { readExamples } from '../../utils/readFiles'
 
-// Read examples from directories
-const badExamples = readFiles(join(__dirname, 'bad-examples'), {
-  extensions: ['.ts'],
-})
-const goodExamples = readFiles(join(__dirname, 'good-examples'), {
-  extensions: ['.ts'],
-})
+export function generateErrorRules(): RuleOptions {
+  const examples = readExamples(__dirname, {
+    extensions: ['.ts', '.vue'],
+  })
 
-export function generateErrorRules(generator: RuleGenerator): void {
-  generator.createRuleFile({
+  return {
     fileName: 'error-handling',
     name: 'Nuxt Error Handling',
     description: 'Follow best practices for error handling and logging in Nuxt applications',
@@ -34,8 +28,8 @@ export function generateErrorRules(generator: RuleGenerator): void {
       'Handle validation errors properly',
       'Implement proper error recovery',
     ],
-    goodExamples: Object.values(goodExamples),
-    badExamples: Object.values(badExamples),
+    goodExamples: Object.values(examples.good),
+    badExamples: Object.values(examples.bad),
     criticalRules: [
       'ALWAYS implement proper error pages',
       'Use createError for server-side errors',
@@ -44,5 +38,5 @@ export function generateErrorRules(generator: RuleGenerator): void {
       'Implement proper error logging',
       'Handle all error states in UI',
     ],
-  })
+  }
 }
