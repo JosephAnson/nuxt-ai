@@ -45,13 +45,23 @@ export interface ModuleOptions {
     }
   }
 
-  // Module options (e.g., Vercel AI provider config)
-  keys: {
-    openaiApiKey: string
-  }
+  /**
+   * Module options for AI provider configuration
+   * These will be added to your Nuxt runtime config
+   *
+   * @example
+   * ```ts
+   * {
+   *   openaiApiKey: process.env.OPENAI_API_KEY,
+   *   anthropicApiKey: process.env.ANTHROPIC_API_KEY,
+   *   // Add any other provider API keys as needed
+   * }
+   * ```
+   */
+  keys?: Record<string, string>
 
   /**
    * Allows you to enable MCP servers from the plugin
    */
-  mcpServers: string[] // Enabling tools from the plugin
+  mcpServers?: string[] // Enabling tools from the plugin
 }

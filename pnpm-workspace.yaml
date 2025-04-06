@@ -29,7 +29,9 @@ catalogs:
     nuxi: ^3.24.1
     nuxt: ^3.16.2
   prod:
+    '@ai-sdk/vue': ^1.2.5
     '@modelcontextprotocol/sdk': ^1.8.0
+    ai: ^2.2.33
     ansis: ^3.17.0
     async-cache-dedupe: ^2.2.0
     citty: ^0.1.6

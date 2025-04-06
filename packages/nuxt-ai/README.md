@@ -8,26 +8,33 @@
 
 A Nuxt module for adding AI capabilities to your Nuxt app.
 
+## Features
+
+- [x] Generate Nuxt rules from examples for different clients
+- [x] Generate MCP server to help with developer experience
+- [ ] Generate MCP server to help with managing documentation
+- [x] Implement auto imported ai helpers to add ai to nuxt applications
+
 ## Quick Setup
 
-1. Add `nuxt-ai` dependency to your project
+1. Add `@josephanson/nuxt-ai` dependency to your project
 
 ```bash
 # Using pnpm
-pnpm add -D nuxt-ai
+pnpm add -D @josephanson/nuxt-ai
 
 # Using yarn
-yarn add --dev nuxt-ai
+yarn add --dev @josephanson/nuxt-ai
 
 # Using npm
-npm install --save-dev nuxt-ai
+npm install --save-dev @josephanson/nuxt-ai
 ```
 
 2. Add `nuxt-ai` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
-  modules: ['nuxt-ai'],
+  modules: ['@josephanson/nuxt-ai'],
 })
 ```
 
@@ -58,6 +65,12 @@ npm run test:watch
 # Release new version
 npm run release
 ```
+
+## Credits
+
+- [Nuxt Vite MCP](https://github.com/antfu/nuxt-mcp)
+- [Nuxt AI SDK](https://sdk.vercel.ai/)
+- [MCP Docs Service](https://github.com/alekspetrov/mcp-docs-service)
 
 ## License
 
