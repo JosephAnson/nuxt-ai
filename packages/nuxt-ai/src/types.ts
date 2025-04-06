@@ -18,34 +18,6 @@ export type Documentation = Record<string, {
 
 export interface ModuleOptions {
   /**
-   * The client to use for the project
-   *
-   * @default 'cursor'
-   */
-  client?: 'cursor' | 'claude'
-
-  options?: {
-    /**
-     * Whether to generate rules for the project
-     *
-     * @default true
-     */
-    rules?: boolean
-
-    mcp?: {
-      /**
-       * Whether to run mcp server to help with creating documentation
-       *
-       * @default true
-       */
-      documentation?: {
-        enabled: boolean
-        path: string
-      }
-    }
-  }
-
-  /**
    * Module options for AI provider configuration
    * These will be added to your Nuxt runtime config
    *
@@ -58,10 +30,51 @@ export interface ModuleOptions {
    * }
    * ```
    */
-  keys?: Record<string, string>
+  apiKeys?: Record<string, string>
 
   /**
-   * Allows you to enable MCP servers from the plugin
+   * Development-only options that are used during development
    */
-  mcpServers?: string[] // Enabling tools from the plugin
+  devOptions?: {
+    /**
+     * The client to use for the project
+     *
+     * @default 'cursor'
+     */
+    client?: 'cursor' | 'claude'
+
+    /**
+     * Whether to enable the MCP server for rules
+     */
+    rules: {
+      enabled: boolean
+    }
+
+    mcp: {
+      /**
+       * Whether to enable the MCP server
+       *
+       * @default true
+       */
+      enabled: boolean
+
+      /**
+       * Whether to run mcp server to help with creating documentation
+       */
+      documentation: {
+        enabled: boolean
+        path?: string
+      }
+
+      /**
+       * Additional documentation to add to the MCP server
+       */
+      additionalDocs?: Documentation
+
+      /**
+       * Allows you to enable MCP servers from the plugin
+       */
+      servers?: string[] // Enabling tools from the plugin
+    }
+  }
 }

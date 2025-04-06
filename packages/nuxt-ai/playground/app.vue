@@ -5,4 +5,7 @@
 </template>
 
 <script setup>
+const { messages, input, handleSubmit } = useChat({
+  api: '/api/chat'
+})
 </script>

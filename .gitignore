@@ -14,3 +14,4 @@ temp
 .cursor/rules/*.nuxt-ai.mdc
 .nuxt-docs-temp
 CLAUDE.md
+.data

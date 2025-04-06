@@ -16,14 +16,26 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'ai',
   },
   defaults: {
-    client: 'cursor',
+    devOptions: {
+      client: 'cursor',
+      rules: {
+        enabled: true,
+      },
+      mcp: {
+        enabled: true,
+        documentation: {
+          enabled: true,
+          path: '/docs',
+        },
+      },
+    },
   },
   async setup(options, nuxt) {
     const unimport = promiseWithResolve<Unimport>()
     const nitro = promiseWithResolve<Nitro>()
 
     nuxt.hook('imports:context', (_unimport) => {
-      unimport.resolve(_unimport as any)
+      unimport.resolve(_unimport)
     })
     nuxt.hook('nitro:init', (_nitro) => {
       nitro.resolve(_nitro)
@@ -35,9 +47,14 @@ export default defineNuxtModule<ModuleOptions>({
       { name: 'useChat', from: '@ai-sdk/vue' },
       { name: 'useCompletion', from: '@ai-sdk/vue' },
       { name: 'useObjectGeneration', from: '@ai-sdk/vue' },
+      { name: 'useAssistant', from: '@ai-sdk/vue' },
+
+      // UI components
+      { name: 'Message', from: '@ai-sdk/vue' },
+      { name: 'ChatMessages', from: '@ai-sdk/vue' },
+      { name: 'Textarea', from: '@ai-sdk/vue' },
 
       // Helper utilities
-      { name: 'useAssistant', from: '@ai-sdk/vue' },
       { name: 'streamText', from: 'ai' },
       { name: 'streamObject', from: 'ai' },
       { name: 'generateObject', from: 'ai' },
@@ -47,14 +64,10 @@ export default defineNuxtModule<ModuleOptions>({
       // Tool utilities
       { name: 'zodToJsonSchema', from: 'ai' },
 
-      // UI components
-      { name: 'Message', from: '@ai-sdk/vue' },
-      { name: 'ChatMessages', from: '@ai-sdk/vue' },
-      { name: 'Textarea', from: '@ai-sdk/vue' },
     ])
 
     // Add runtime configuration for API keys if provided
-    if (options.keys) {
+    if (options.apiKeys) {
       nuxt.options.runtimeConfig = nuxt.options.runtimeConfig || {}
       // Make sure ai namespace exists
       if (!nuxt.options.runtimeConfig.ai) {
@@ -62,7 +75,7 @@ export default defineNuxtModule<ModuleOptions>({
       }
 
       // Copy the keys to the runtime config
-      Object.entries(options.keys).forEach(([key, value]) => {
+      Object.entries(options.apiKeys).forEach(([key, value]) => {
         // @ts-expect-error - we know this is safe
         nuxt.options.runtimeConfig.ai[key] = value
       })
@@ -71,7 +84,7 @@ export default defineNuxtModule<ModuleOptions>({
     addVitePlugin(ViteMcp({
       port: nuxt.options.devServer.port,
       updateCursorMcpJson: {
-        enabled: options?.client === 'cursor',
+        enabled: options?.devOptions?.client === 'cursor',
         serverName: 'nuxt',
       },
       mcpServerInfo: {
@@ -87,12 +100,16 @@ export default defineNuxtModule<ModuleOptions>({
           mcp,
         }
 
-        generateRules(context, options)
+        if (options.devOptions?.rules?.enabled) {
+          generateRules(context, options)
+        }
 
-        toolsNuxtRuntime(context)
-        toolsNuxtDotComInfo(context)
-        toolsScaffold(context)
-        toolsDocs(context, options)
+        if (options.devOptions?.mcp?.enabled) {
+          toolsDocs(context, options)
+          toolsNuxtRuntime(context)
+          toolsNuxtDotComInfo(context)
+          toolsScaffold(context)
+        }
       },
     }), { client: true })
   },

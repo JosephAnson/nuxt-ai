@@ -1,0 +1,29 @@
+{
+  "name": "docs",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@iconify-json/lucide": "catalog:docs",
+    "@iconify-json/simple-icons": "catalog:docs",
+    "@iconify-json/vscode-icons": "catalog:docs",
+    "@nuxt/content": "catalog:docs",
+    "@nuxt/image": "catalog:docs",
+    "@nuxt/ui-pro": "catalog:docs",
+    "@nuxthub/core": "catalog:docs",
+    "@nuxtjs/plausible": "catalog:docs",
+    "@octokit/rest": "catalog:docs",
+    "@vueuse/core": "catalog:docs",
+    "@vueuse/nuxt": "catalog:docs",
+    "clsx": "catalog:docs",
+    "minisearch": "catalog:docs",
+    "nuxt": "catalog:nuxt",
+    "nuxt-llms": "catalog:docs",
+    "nuxt-og-image": "catalog:docs",
+    "pathe": "catalog:prod",
+    "prettier": "catalog:docs",
+    "shiki-transformer-color-highlight": "catalog:docs",
+    "tailwind-merge": "catalog:docs",
+    "tailwindcss": "catalog:docs",
+    "ufo": "catalog:docs"
+  }
+}

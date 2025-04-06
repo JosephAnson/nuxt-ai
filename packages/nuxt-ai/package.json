@@ -31,15 +31,17 @@
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground"
   },
   "peerDependencies": {
+    "@ai-sdk/vue": ">=1.2.5",
+    "ai": ">=4",
     "nitropack": "^2 || ^3",
     "nuxi": ">=3",
     "nuxt": ">=3.5.0"
   },
   "dependencies": {
-    "@ai-sdk/vue": "catalog:prod",
-    "@modelcontextprotocol/sdk": "catalog:prod",
+    "@ai-sdk/vue": "catalog:ai",
+    "@modelcontextprotocol/sdk": "catalog:ai",
     "@nuxt/kit": "catalog:nuxt",
-    "ai": "catalog:prod",
+    "ai": "catalog:ai",
     "ansis": "catalog:prod",
     "async-cache-dedupe": "catalog:prod",
     "citty": "catalog:prod",

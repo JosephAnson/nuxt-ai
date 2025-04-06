@@ -69,8 +69,6 @@ export class ClaudeRuleClient extends BaseRuleClient {
    * @returns Formatted rule content as string
    */
   formatContent(options: RuleOptions): string {
-    const alwaysApply = options.alwaysApply !== undefined ? options.alwaysApply : false
-
     // Format the content as a markdown rule
     let content = `## ${options.name}\n\n`
     content += `**Description**: ${options.description}\n\n`
@@ -122,7 +120,6 @@ export class ClaudeRuleClient extends BaseRuleClient {
    */
   async finalize(): Promise<void> {
     if (this.rulesBuffer.length === 0) {
-      console.log('No Claude rules generated, skipping file write.')
       return
     }
 
@@ -130,27 +127,19 @@ export class ClaudeRuleClient extends BaseRuleClient {
     const aggregatedContent = this.rulesBuffer.join('\n\n---\n\n') // Separate rules clearly
     const finalBlock = `<nuxt-ai-generated>\n${aggregatedContent}\n</nuxt-ai-generated>\n`
 
-    try {
-      console.log('Writing aggregated Claude rules file')
-      let existingContent = ''
-      if (existsSync(claudeFilePath)) {
-        existingContent = await readFile(claudeFilePath, 'utf-8')
-        // Ensure there's separation if existing content is not empty and doesn't end with double newline
-        if (existingContent.length > 0 && !existingContent.endsWith('\n\n')) {
-          existingContent += existingContent.endsWith('\n') ? '\n' : '\n\n'
-        }
+    let existingContent = ''
+    if (existsSync(claudeFilePath)) {
+      existingContent = await readFile(claudeFilePath, 'utf-8')
+      // Ensure there's separation if existing content is not empty and doesn't end with double newline
+      if (existingContent.length > 0 && !existingContent.endsWith('\n\n')) {
+        existingContent += existingContent.endsWith('\n') ? '\n' : '\n\n'
       }
-
-      const newContent = existingContent + finalBlock
-      await writeFile(claudeFilePath, newContent)
-      console.log(`Successfully wrote ${this.rulesBuffer.length} rules to ${claudeFilePath}`)
-
-      // Clear the buffer after writing
-      this.rulesBuffer = []
     }
-    catch (error) {
-      console.error('Error writing aggregated Claude rules file:', error)
-      throw error // Re-throw so caller knows something went wrong
-    }
+
+    const newContent = existingContent + finalBlock
+    await writeFile(claudeFilePath, newContent)
+
+    // Clear the buffer after writing
+    this.rulesBuffer = []
   }
 }
