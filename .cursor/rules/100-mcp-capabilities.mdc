@@ -1,7 +1,6 @@
 ---
 description: APPLY when INTEGRATING to understand available MCP server capabilities and configurations
 globs: .cursor/mcp.json
-alwaysApply: true
 ---
 
 # MCP Integration Capabilities

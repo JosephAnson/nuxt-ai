@@ -6,23 +6,62 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-> A collection of tools for adding AI capabilities to your Nuxt app.
+A Nuxt module for adding AI capabilities to your Nuxt app.
 
-## Packages
+## Quick Setup
 
-- [`nuxt-ai`](./packages/nuxt-ai) - A Nuxt module for adding AI capabilities to your Nuxt app.
+1. Add `nuxt-ai` dependency to your project
+
+```bash
+# Using pnpm
+pnpm add -D nuxt-ai
+
+# Using yarn
+yarn add --dev nuxt-ai
+
+# Using npm
+npm install --save-dev nuxt-ai
+```
+
+2. Add `nuxt-ai` to the `modules` section of `nuxt.config.ts`
+
+```js
+export default defineNuxtConfig({
+  modules: ['nuxt-ai'],
+})
+```
+
+That's it! You can now use nuxt-ai in your Nuxt app ✨
 
 ## Development
 
-- Clone this repository
-- Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
+```bash
+# Install dependencies
+npm install
+
+# Generate type stubs
+npm run dev:prepare
+
+# Develop with the playground
+npm run dev
+
+# Build the playground
+npm run dev:build
+
+# Run ESLint
+npm run lint
+
+# Run Vitest
+npm run test
+npm run test:watch
+
+# Release new version
+npm run release
+```
 
 ## License
 
-Made with 💛
-
-Published under [MIT License](./LICENSE).
+[MIT](./LICENSE) License © [Joseph Anson](https://github.com/josephanson)
 
 <!-- Badges -->
 

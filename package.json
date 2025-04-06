@@ -11,7 +11,8 @@
     "test": "vitest",
     "inspect": "npx @modelcontextprotocol/inspector",
     "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks && nr -r dev:prepare"
+    "prepare": "simple-git-hooks && nr -r dev:prepare",
+    "publish": "pnpm -r publish --access public"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:cli",

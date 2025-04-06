@@ -1,12 +1,12 @@
 {
-  "name": "nuxt-cursor",
+  "name": "@josephanson/nuxt-ai",
   "type": "module",
   "version": "0.0.1",
-  "description": "MCP server helping models to understand your Nuxt app better.",
+  "description": "Excelerate your application development with AI.",
   "license": "MIT",
-  "homepage": "https://github.com/josephanson/nuxt-cursor#readme",
-  "repository": "josephanson/nuxt-cursor",
-  "bugs": "https://github.com/josephanson/nuxt-cursor/issues",
+  "homepage": "https://github.com/josephanson/nuxt-ai#readme",
+  "repository": "josephanson/nuxt-ai",
+  "bugs": "https://github.com/josephanson/nuxt-ai/issues",
   "keywords": [
     "nuxt",
     "mcp",
@@ -26,7 +26,7 @@
   "scripts": {
     "build": "nuxt-module-build build",
     "prepublishOnly": "nr build",
-    "dev": "DEBUG=nuxt:cursor:server,vite:mcp:server PORT=4000 nuxi dev playground",
+    "dev": "DEBUG=nuxt:ai:server,vite:mcp:server PORT=4000 nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground"
   },

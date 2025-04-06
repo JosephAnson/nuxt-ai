@@ -198,7 +198,7 @@ importers:
         specifier: catalog:prod
         version: 3.24.2
 
-  packages/nuxt-cursor:
+  packages/nuxt-ai:
     dependencies:
       '@modelcontextprotocol/sdk':
         specifier: catalog:prod

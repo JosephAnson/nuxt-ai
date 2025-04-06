@@ -39,4 +39,4 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - run: pnpm dlx pkg-pr-new publish './packages/nuxt-cursor' --compact --no-template --pnpm
+      - run: pnpm dlx pkg-pr-new publish './packages/nuxt-ai' --compact --no-template --pnpm

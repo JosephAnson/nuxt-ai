@@ -30,7 +30,7 @@ export class RuleGenerator {
     if (existsSync(this.rulesDir)) {
       const files = readdirSync(this.rulesDir)
       for (const file of files) {
-        if (file.endsWith('.nuxt-cursor.mdc')) {
+        if (file.endsWith('.nuxt-ai.mdc')) {
           unlinkSync(join(this.rulesDir, file))
         }
       }
@@ -38,7 +38,7 @@ export class RuleGenerator {
   }
 
   async generateRuleFile(name: string, content: string): Promise<void> {
-    const filePath = join(this.rulesDir, `${name}.nuxt-cursor.mdc`)
+    const filePath = join(this.rulesDir, `${name}.nuxt-ai.mdc`)
     await writeFile(filePath, content)
   }
 

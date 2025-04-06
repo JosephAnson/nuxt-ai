@@ -12,8 +12,8 @@ import { toolsScaffold } from './tools/scaffold'
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'nuxt-cursor',
-    configKey: 'mcp',
+    name: 'nuxt-ai',
+    configKey: 'nuxtAi',
   },
   defaults: {
     updateCursorMcpJson: true,

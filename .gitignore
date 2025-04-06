@@ -11,5 +11,5 @@ node_modules
 temp
 .nuxt
 .output
-.cursor/rules/*.nuxt-cursor.mdc
+.cursor/rules/*.nuxt-ai.mdc
 .nuxt-docs-temp

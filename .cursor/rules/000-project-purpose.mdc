@@ -1,59 +1,73 @@
 ---
-description: APPLY when DEVELOPING to ensure proper Nuxt-Cursor integration and MCP usage
+description: APPLY when DEVELOPING to understand the goal of creating a Nuxt module for easy Vercel AI SDK integration.
 globs: **/*
 alwaysApply: true
 ---
 
-# Nuxt-Cursor Project Purpose
+# Nuxt AI - Project Purpose
 
 ## Context
-This project enhances Cursor's capabilities with Nuxt applications by:
-- Providing comprehensive rules for Nuxt development
-- Integrating MCP servers for enhanced context
-- Establishing best practices for Nuxt-Cursor workflows
+This project aims to create Nuxt modules that simplifies the integration of AI capabilities into Nuxt applications, primarily leveraging the AI editor rules, Vercel AI SDK (`@ai-sdk/vue`) and MCP (Model Context Protocol). 
+Its core goals are:
+- Providing a seamless installation and setup experience for developers.
+- Offering auto-imports for Vercel AI SDK composables and utilities.
+- Bundling development assistance tools, including:
+    - Pre-defined rules compatible with .cursor/rules/* (`.mdc`), Claude (`.md`) and other AI assistants.
+    - A built-in MCP (Model Context Protocol) server with tools specifically designed to aid Nuxt AI development.
+- Implementing an extensible MCP plugin system, allowing other mcp servers to be integrated to nuxt-ai (e.g., a separate documentation generation module).
 
 ## Requirements
-- Follow all Nuxt-specific rules for components, TypeScript, and SSR
-- Utilize MCP servers for enhanced project context
-- Maintain rule documentation for Nuxt best practices
-- Implement proper type definitions and API integrations
-- Keep rules synchronized with Nuxt and Cursor updates
+- Develop the project as a standard Nuxt module following Nuxt Kit conventions. [@https://nuxt.com/docs/api/kit/modules]
+- Integrate `@ai-sdk/vue` and its dependencies effectively. [@https://sdk.vercel.ai/docs/getting-started/nuxt]
+- Implement robust auto-import functionality for key Vercel AI SDK features.
+- Create helpful and well-documented rules for both Cursor, Claude and other AI assistants. [@https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/tutorials]
+- Build a versatile MCP server with useful development tools.
+- Design and implement a clear API for the MCP plugin system.
+- Ensure secure handling of API keys (like `OPENAI_API_KEY`) required by the Vercel AI SDK.
 
 ## Examples
 <example>
-// Proper MCP integration with type support
-const { data } = await useAsyncData('users', () => 
-  $fetch('/api/users')
-)
+// Example: Nuxt configuration enabling the module and an MCP plugin
+export default defineNuxtConfig({
+  modules: [
+    'nuxt-ai',
+  ],
+  ai: {
+    // Module options (e.g., Vercel AI provider config)
+    keys: {
+      openaiApiKey: process.env.OPENAI_API_KEY,
+    },
+    options: {
+      rules: true, // Default is true
+      mcp: {
+        documentation: {
+          enabled: true, // Default is true
+          path: '/docs'
+        }
+      }
+    },
+    mcpServers: ['nuxt-ai-docs-mcp'] // Enabling tools from the plugin
+  }
+})
 
-// Using rules for component structure
-<script setup lang="ts">
-import { defineProps } from 'vue'
-import type { User } from '~/types'
-
-interface Props {
-  user: User
-}
-
-defineProps<Props>()
-</script>
+// Example: Using auto-imported composable
+const { messages, input, handleSubmit } = useChat();
 </example>
 
 <example type="invalid">
-// Missing type definitions and improper structure
-const data = await $fetch('/api/users') as any
+// Missing module configuration or API keys
+export default defineNuxtConfig({
+  modules: ['nuxt-ai']
+  // Missing ai: { ... } block or required keys
+})
 
-// Not following component rules
-export default {
-  props: ['user'],
-  setup(props) {
-    // ...
-  }
-}
+// Manually importing SDK components when auto-import is available
+import { useChat } from '@ai-sdk/vue'; // Should be auto-imported
 </example>
 
 ## Critical Rules
-- ALWAYS follow Nuxt-specific rules for components and TypeScript
-- NEVER bypass type checking or MCP integration capabilities
-- Maintain up-to-date documentation for all rules and MCP features
-- Keep rules synchronized with latest Nuxt and Cursor versions 
+- ALWAYS structure the project as a Nuxt module using Nuxt Kit.
+- ALWAYS prioritize ease of use and setup for the end-developer.
+- NEVER hardcode sensitive API keys; rely on environment variables and Nuxt runtime config.
+- MUST provide clear documentation for module configuration, rules, and MCP tools/plugins.
+- ENSURE compatibility between rules/MCP features and both Cursor and potentially other AI assistants like Claude. 
