@@ -96,4 +96,8 @@ ${goodExamples.map(example => `<example>\n${example}\n</example>\n`).join('\n')}
 ${badExamples.map(example => `<example type="invalid">\n${example}\n</example>\n`).join('\n')}
 ${criticalRules.length > 0 ? `\n## Critical Rules\n${criticalRules.map(rule => `- ${rule}`).join('\n')}\n` : ''}`
   }
+
+  async finalize(): Promise<void> {
+    // No need to finalize in Cursor
+  }
 }

@@ -25,7 +25,7 @@ import { generateTypescriptRules } from './generators/typescript'
 
 export async function generateRules(context: McpToolContext, options: ModuleOptions): Promise<void> {
   // Create the new generator
-  const generator = createRuleGenerator(context, options?.client || 'cursor')
+  const generator = createRuleGenerator(context, options?.devOptions?.client || 'cursor')
 
   // Initialize rule directories
   await generator.ensureDirectory()
@@ -52,7 +52,7 @@ export async function generateRules(context: McpToolContext, options: ModuleOpti
   await generator.createRule(generateErrorRules())
 
   // Testing rules
-  await generateTestingRules(generator)
+  await generator.createRule(generateTestingRules())
 
   // Finalize the rule generation
   await generator.finalize()

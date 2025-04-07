@@ -1,12 +1,12 @@
-import type { BaseRuleClient } from '../../clients/base'
+import type { RuleOptions } from '../../types'
 import { readExamples } from '../../utils/readFiles'
 
-export async function generateTestingRules(generator: BaseRuleClient): Promise<void> {
+export function generateTestingRules(): RuleOptions {
   const examples = readExamples(__dirname, {
     extensions: ['.ts'],
   })
 
-  await generator.createRule({
+  return {
     fileName: 'testing',
     name: 'Nuxt Testing',
     description: 'Follow best practices for testing Nuxt applications using Vitest and Vue Test Utils',
@@ -38,5 +38,5 @@ export async function generateTestingRules(generator: BaseRuleClient): Promise<v
       'Use meaningful assertions',
       'Test component contracts',
     ],
-  })
+  }
 }
