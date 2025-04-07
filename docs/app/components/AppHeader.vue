@@ -59,19 +59,12 @@ const linksWithoutIcon = computed(() => links.value.map(({ icon, ...link }) => l
         <UButton
           color="neutral"
           variant="ghost"
-          to="https://github.com/nuxt/content"
+          to="https://github.com/josephanson/nuxt-ai"
           target="_blank"
           icon="i-simple-icons-github"
           aria-label="GitHub"
         />
       </UTooltip>
-
-      <UButton
-        label="Open Studio"
-        to="https://nuxt.studio"
-        size="sm"
-        class="hidden sm:inline-flex"
-      />
     </template>
 
     <template #body>

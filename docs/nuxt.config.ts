@@ -27,6 +27,10 @@ export default defineNuxtConfig({
     url: 'https://nuxt-ai.josephanson.com',
   },
 
+  uiPro: {
+    license: import.meta.env.UI_PRO_LICENSE,
+  },
+
   content: {
     experimental: {
       nativeSqlite: true,

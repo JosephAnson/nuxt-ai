@@ -27,7 +27,7 @@ const route = useRoute()
   <UFooter>
     <template #left>
       <NuxtLink
-        to="https://github.com/@josephanson/nuxt-ai"
+        to="https://github.com/josephanson/nuxt-ai"
         target="_blank"
         class="text-sm text-(--ui-text-muted)"
       >
@@ -41,7 +41,7 @@ const route = useRoute()
       <UButton
         aria-label="Nuxt AI on GitHub"
         icon="i-simple-icons-github"
-        to="https://github.com/@josephanson/nuxt-ai"
+        to="https://github.com/josephanson/nuxt-ai"
         target="_blank"
         color="neutral"
         variant="ghost"

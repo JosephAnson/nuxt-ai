@@ -45,13 +45,13 @@ const communityLinks = computed(() => [
   {
   icon: 'i-lucide-pencil',
   label: 'Edit this page',
-  to: `https://github.com/@josephanson/nuxt-ai/edit/main/docs/content/${page.value?.stem}.${page.value?.extension}`,
+  to: `https://github.com/josephanson/nuxt-ai/edit/main/docs/content/${page.value?.stem}.${page.value?.extension}`,
   target: '_blank',
 }, 
 {
   icon: 'i-lucide-star',
   label: 'Star on GitHub',
-  to: 'https://github.com/@josephanson/nuxt-ai',
+  to: 'https://github.com/josephanson/nuxt-ai',
   target: '_blank',
   },
 ])
