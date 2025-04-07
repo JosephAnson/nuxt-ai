@@ -16,6 +16,7 @@
   },
   "exclude": [
     "**/good-examples",
-    "**/bad-examples"
+    "**/bad-examples",
+    "docs"
   ]
 }

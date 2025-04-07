@@ -12,6 +12,8 @@ export interface McpToolContext {
   unimport: Promise<Unimport>
 }
 
+export type { Nuxt }
+
 export type Documentation = Record<string, {
   url: string
 }>
@@ -46,23 +48,23 @@ export interface ModuleOptions {
     /**
      * Whether to enable the MCP server for rules
      */
-    rules: {
-      enabled: boolean
+    rules?: {
+      enabled?: boolean
     }
 
-    mcp: {
+    mcp?: {
       /**
        * Whether to enable the MCP server
        *
        * @default true
        */
-      enabled: boolean
+      enabled?: boolean
 
       /**
        * Whether to run mcp server to help with creating documentation
        */
-      documentation: {
-        enabled: boolean
+      documentation?: {
+        enabled?: boolean
         path?: string
       }
 

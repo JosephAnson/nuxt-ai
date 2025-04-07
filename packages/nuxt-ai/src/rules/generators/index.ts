@@ -1,4 +1,4 @@
-import type { McpToolContext } from '../../types'
+import type { Nuxt } from '../../types'
 import type { BaseRuleClient } from '../clients/base'
 import type { ClientType } from '../types'
 import { join } from 'pathe'
@@ -9,8 +9,8 @@ import { CursorRuleClient } from '../clients/cursor'
 /**
  * Create a rule client for a specific AI platform
  */
-export function createRuleGenerator(context: McpToolContext, clientType: ClientType): BaseRuleClient {
-  const projectRoot = searchForWorkspaceRoot(context.nuxt.options.rootDir)
+export function createRuleGenerator(nuxt: Nuxt, clientType: ClientType): BaseRuleClient {
+  const projectRoot = searchForWorkspaceRoot(nuxt.options.rootDir)
 
   switch (clientType) {
     case 'claude':

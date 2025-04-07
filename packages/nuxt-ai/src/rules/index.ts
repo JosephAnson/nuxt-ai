@@ -4,7 +4,7 @@
  * This module provides tools for generating AI assistant rules for different platforms.
  */
 
-import type { McpToolContext, ModuleOptions } from '../types'
+import type { ModuleOptions, Nuxt } from '../types'
 
 import { createRuleGenerator } from './generators'
 import { generateAssetsRules } from './generators/assets'
@@ -23,9 +23,9 @@ import { generateStoreRules } from './generators/stores'
 import { generateTestingRules } from './generators/testing'
 import { generateTypescriptRules } from './generators/typescript'
 
-export async function generateRules(context: McpToolContext, options: ModuleOptions): Promise<void> {
+export async function generateRules(nuxt: Nuxt, options: ModuleOptions): Promise<void> {
   // Create the new generator
-  const generator = createRuleGenerator(context, options?.devOptions?.client || 'cursor')
+  const generator = createRuleGenerator(nuxt, options?.devOptions?.client || 'cursor')
 
   // Initialize rule directories
   await generator.ensureDirectory()
@@ -43,7 +43,7 @@ export async function generateRules(context: McpToolContext, options: ModuleOpti
   await generator.createRule(generateComposablesRules())
   await generator.createRule(generateDataFetchingRules())
   await generator.createRule(generatePluginRules())
-  await generator.createRule(generateRenderingRules(context.nuxt.options))
+  await generator.createRule(generateRenderingRules(nuxt.options))
   await generator.createRule(generateMiddlewareRules())
   await generator.createRule(generateServerRules())
   await generator.createRule(generateStoreRules())

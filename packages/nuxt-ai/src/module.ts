@@ -81,37 +81,37 @@ export default defineNuxtModule<ModuleOptions>({
       })
     }
 
-    addVitePlugin(ViteMcp({
-      port: nuxt.options.devServer.port,
-      updateCursorMcpJson: {
-        enabled: options?.devOptions?.client === 'cursor',
-        serverName: 'nuxt',
-      },
-      mcpServerInfo: {
-        name: 'nuxt',
-        version,
-      },
-      mcpServerSetup(mcp, vite) {
-        const context: McpToolContext = {
-          unimport: unimport.promise,
-          nitro: nitro.promise,
-          nuxt,
-          vite,
-          mcp,
-        }
+    if (options.devOptions?.rules?.enabled) {
+      generateRules(nuxt, options)
+    }
 
-        if (options.devOptions?.rules?.enabled) {
-          generateRules(context, options)
-        }
+    if (options.devOptions?.mcp?.enabled) {
+      addVitePlugin(ViteMcp({
+        port: nuxt.options.devServer.port,
+        updateCursorMcpJson: {
+          enabled: options?.devOptions?.client === 'cursor',
+          serverName: 'nuxt',
+        },
+        mcpServerInfo: {
+          name: 'nuxt',
+          version,
+        },
+        mcpServerSetup(mcp, vite) {
+          const context: McpToolContext = {
+            unimport: unimport.promise,
+            nitro: nitro.promise,
+            nuxt,
+            vite,
+            mcp,
+          }
 
-        if (options.devOptions?.mcp?.enabled) {
           toolsDocs(context, options)
           toolsNuxtRuntime(context)
           toolsNuxtDotComInfo(context)
           toolsScaffold(context)
-        }
-      },
-    }), { client: true })
+        },
+      }), { client: true })
+    }
   },
 })
 
