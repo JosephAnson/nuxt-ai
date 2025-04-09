@@ -22,7 +22,9 @@ WORKDIR /app
 
 RUN pnpm run docs:build
 
+RUN ls -al /app/docs/.output/server
+
 ENV PORT 3000
 EXPOSE 3000
 
-CMD ["node", "./docs/.output/server/index.mjs"]
+CMD ["node", "docs/.output/server/index.mjs"]

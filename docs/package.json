@@ -9,7 +9,7 @@
     "@nuxt/content": "catalog:docs",
     "@nuxt/image": "catalog:docs",
     "@nuxt/ui-pro": "catalog:docs",
-    "@nuxthub/core": "catalog:docs",
+    "@nuxtjs/mdc": "catalog:docs",
     "@nuxtjs/plausible": "catalog:docs",
     "@octokit/rest": "catalog:docs",
     "@vueuse/core": "catalog:docs",
@@ -24,6 +24,7 @@
     "shiki-transformer-color-highlight": "catalog:docs",
     "tailwind-merge": "catalog:docs",
     "tailwindcss": "catalog:docs",
-    "ufo": "catalog:docs"
+    "ufo": "catalog:docs",
+    "unist-util-visit": "catalog:docs"
   }
 }

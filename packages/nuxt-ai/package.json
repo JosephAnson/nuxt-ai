@@ -19,7 +19,13 @@
   },
   "main": "./dist/module.mjs",
   "module": "./dist/module.mjs",
-  "types": "./dist/types.d.mts",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
