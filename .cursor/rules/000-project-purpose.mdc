@@ -57,7 +57,7 @@ const { messages, input, handleSubmit } = useChat();
 <example type="invalid">
 // Missing module configuration or API keys
 export default defineNuxtConfig({
-  modules: ['nuxt-ai']
+  modules: ['@josephanson/nuxt-ai']
   // Missing ai: { ... } block or required keys
 })
 

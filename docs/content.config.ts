@@ -20,9 +20,11 @@ export default defineContentConfig({
     }),
     landing: defineCollection({
       type: 'page',
-      source: [{
-        include: 'index.md',
-      }],
+      source: [
+        {
+          include: 'index.md',
+        },
+      ],
     }),
   },
 })

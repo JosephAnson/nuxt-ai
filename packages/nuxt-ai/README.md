@@ -1,4 +1,4 @@
-# josephanson/nuxt-ai
+# @josephanson/nuxt-ai
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -17,24 +17,24 @@ A Nuxt module for adding AI capabilities to your Nuxt app.
 
 ## Quick Setup
 
-1. Add `josephanson/nuxt-ai` dependency to your project
+1. Add `@josephanson/nuxt-ai` dependency to your project
 
 ```bash
 # Using pnpm
-pnpm add -D josephanson/nuxt-ai
+pnpm add -D @josephanson/nuxt-ai
 
 # Using yarn
-yarn add --dev josephanson/nuxt-ai
+yarn add --dev @josephanson/nuxt-ai
 
 # Using npm
-npm install --save-dev josephanson/nuxt-ai
+npm install --save-dev @josephanson/nuxt-ai
 ```
 
 2. Add `nuxt-ai` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
-  modules: ['josephanson/nuxt-ai'],
+  modules: ['@josephanson/nuxt-ai'],
 })
 ```
 
@@ -68,6 +68,8 @@ npm run release
 
 ## Credits
 
+Big thanks to the following projects that made this possible and inspired this project:
+
 - [Nuxt Vite MCP](https://github.com/antfu/nuxt-mcp)
 - [Nuxt AI SDK](https://sdk.vercel.ai/)
 - [MCP Docs Service](https://github.com/alekspetrov/mcp-docs-service)
@@ -78,13 +80,13 @@ npm run release
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/josephanson/nuxt-ai?style=flat&colorA=080f12&colorB=1fa669
-[npm-version-href]: https://npmjs.com/package/josephanson/nuxt-ai
-[npm-downloads-src]: https://img.shields.io/npm/dm/josephanson/nuxt-ai?style=flat&colorA=080f12&colorB=1fa669
-[npm-downloads-href]: https://npmjs.com/package/josephanson/nuxt-ai
-[bundle-src]: https://img.shields.io/bundlephobia/minzip/josephanson/nuxt-ai?style=flat&colorA=080f12&colorB=1fa669&label=minzip
-[bundle-href]: https://bundlephobia.com/result?p=josephanson/nuxt-ai
+[npm-version-src]: https://img.shields.io/npm/v/@josephanson/nuxt-ai?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmjs.com/package/@josephanson/nuxt-ai
+[npm-downloads-src]: https://img.shields.io/npm/dm/@josephanson/nuxt-ai?style=flat&colorA=080f12&colorB=1fa669
+[npm-downloads-href]: https://npmjs.com/package/@josephanson/nuxt-ai
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/@josephanson/nuxt-ai?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=@josephanson/nuxt-ai
 [license-src]: https://img.shields.io/github/license/josephanson/nuxt-ai.svg?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/josephanson/nuxt-ai/blob/main/LICENSE
+[license-href]: https://github.com/josephanson/nuxt-ai/blob/main/LICENSE.md
 [jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
-[jsdocs-href]: https://www.jsdocs.io/package/josephanson/nuxt-ai
+[jsdocs-href]: https://www.jsdocs.io/package/@josephanson/nuxt-ai

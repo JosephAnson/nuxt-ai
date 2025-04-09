@@ -7,7 +7,7 @@ ENV NUXT_UI_PRO_LICENSE=${NUXT_UI_PRO_LICENSE}
 
 WORKDIR /app
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm nuxi
 
 COPY pnpm-workspace.yaml ./
 COPY package.json ./
@@ -18,11 +18,11 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-WORKDIR /app/docs
+WORKDIR /app
 
-RUN pnpm run --filter ./docs build
+RUN pnpm run docs:build
 
 ENV PORT 3000
 EXPOSE 3000
 
-CMD ["node", ".output/server/index.mjs"]
+CMD ["node", "./docs/.output/server/index.mjs"]

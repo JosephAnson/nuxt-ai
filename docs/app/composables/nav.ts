@@ -22,11 +22,6 @@ export function useNavLinks(): ComputedRef<{ label: string, icon: string, to: st
       to: '/docs/ai-rules',
       active: route.path.startsWith('/docs/ai-rules'),
     },
-    {
-      label: 'Changelog',
-      icon: 'i-lucide-history',
-      to: '/changelog',
-    },
   ])
 }
 
