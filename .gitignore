@@ -16,3 +16,4 @@ temp
 CLAUDE.md
 .data
 .env
+packages/nuxt-ai/src/generated/

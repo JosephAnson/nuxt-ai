@@ -6,33 +6,33 @@
 
 import type { ModuleOptions, Nuxt } from '../types'
 
-import { createRuleGenerator } from './generators'
-import { generateAssetsRules } from './generators/assets'
-import { generateComponentRules } from './generators/components'
-import { generateComposablesRules } from './generators/composables'
-import { generateClientSideRenderingRules } from './generators/csr-examples'
-import { generateDataFetchingRules } from './generators/data-fetching'
-import { generateErrorRules } from './generators/errors'
-import { generateHydrationRules } from './generators/hydration-examples'
-import { generateLayoutRules } from './generators/layouts'
-import { generateMiddlewareRules } from './generators/middleware'
-import { generatePagesRules } from './generators/pages'
-import { generatePluginRules } from './generators/plugins'
-import { generateRuntimeRules } from './generators/runtime'
-import { generateServerRules } from './generators/server'
-import { generateServerSideRenderingRules } from './generators/ssr-examples'
-import { generateStoreRules } from './generators/stores'
-import { generateTestingRules } from './generators/testing'
-import { generateTypescriptRules } from './generators/typescript'
+import { createClientRuleGenerator } from './createClientRuleGenerator'
+import { generateAssetsRules } from './examples/assets'
+import { generateComponentRules } from './examples/components'
+import { generateComposablesRules } from './examples/composables'
+import { generateClientSideRenderingRules } from './examples/csr-examples'
+import { generateDataFetchingRules } from './examples/data-fetching'
+import { generateErrorRules } from './examples/errors'
+import { generateHydrationRules } from './examples/hydration-examples'
+import { generateLayoutRules } from './examples/layouts'
+import { generateMiddlewareRules } from './examples/middleware'
+import { generatePagesRules } from './examples/pages'
+import { generatePluginRules } from './examples/plugins'
+import { generateRuntimeRules } from './examples/runtime'
+import { generateServerRules } from './examples/server'
+import { generateServerSideRenderingRules } from './examples/ssr-examples'
+import { generateStoreRules } from './examples/stores'
+import { generateTestingRules } from './examples/testing'
+import { generateTypescriptRules } from './examples/typescript'
 
-export async function generateRules(nuxt: Nuxt, options: ModuleOptions): Promise<void> {
-  // Create the new generator
-  const generator = createRuleGenerator(nuxt, options?.devOptions?.client || 'cursor')
+export async function generateRules(
+  nuxt: Nuxt,
+  options: ModuleOptions,
+): Promise<void> {
+  const generator = createClientRuleGenerator(nuxt, options?.devOptions?.client || 'cursor')
 
-  // Initialize rule directories
   await generator.ensureDirectory()
 
-  // Clean up old rules
   await generator.cleanup()
 
   // Core standards

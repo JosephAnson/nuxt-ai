@@ -41,7 +41,6 @@ export default defineNuxtModule<ModuleOptions>({
       nitro.resolve(_nitro)
     })
 
-    // Add auto-imports for Vercel AI SDK
     addImports([
       // Core AI SDK composables
       { name: 'useChat', from: '@ai-sdk/vue' },
@@ -66,15 +65,12 @@ export default defineNuxtModule<ModuleOptions>({
 
     ])
 
-    // Add runtime configuration for API keys if provided
     if (options.apiKeys) {
       nuxt.options.runtimeConfig = nuxt.options.runtimeConfig || {}
-      // Make sure ai namespace exists
       if (!nuxt.options.runtimeConfig.ai) {
         nuxt.options.runtimeConfig.ai = {}
       }
 
-      // Copy the keys to the runtime config
       Object.entries(options.apiKeys).forEach(([key, value]) => {
         // @ts-expect-error - we know this is safe
         nuxt.options.runtimeConfig.ai[key] = value

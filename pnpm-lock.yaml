@@ -154,6 +154,9 @@ catalogs:
     citty:
       specifier: ^0.1.6
       version: 0.1.6
+    consola:
+      specifier: ^3.4.2
+      version: 3.4.2
     debug:
       specifier: ^4.4.0
       version: 4.4.0
@@ -364,6 +367,9 @@ importers:
       citty:
         specifier: catalog:prod
         version: 0.1.6
+      consola:
+        specifier: catalog:prod
+        version: 3.4.2
       debug:
         specifier: catalog:prod
         version: 4.4.0(supports-color@5.5.0)

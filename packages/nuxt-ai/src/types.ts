@@ -76,7 +76,7 @@ export interface ModuleOptions {
       /**
        * Allows you to enable MCP servers from the plugin
        */
-      servers?: string[] // Enabling tools from the plugin
+      servers?: string[]
     }
   }
 }

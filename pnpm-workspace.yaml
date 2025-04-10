@@ -58,6 +58,7 @@ catalogs:
     ansis: ^3.17.0
     async-cache-dedupe: ^2.2.0
     citty: ^0.1.6
+    consola: ^3.4.2
     debug: ^4.4.0
     giget: ^2.0.0
     h3: ^1.15.1

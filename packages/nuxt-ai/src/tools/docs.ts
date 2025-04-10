@@ -1,6 +1,7 @@
 import type { McpToolContext, ModuleOptions } from '../types'
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { consola } from 'consola'
 import { downloadTemplate } from 'giget'
 import { z } from 'zod'
 
@@ -81,7 +82,7 @@ export async function toolsDocs({ mcp }: McpToolContext, options: ModuleOptions)
         }
       }
       catch (error: unknown) {
-        console.error('Error listing documentation files:', error)
+        consola.error('Error listing documentation files:', error)
         return {
           content: [{
             type: 'text' as const,
@@ -118,7 +119,7 @@ export async function toolsDocs({ mcp }: McpToolContext, options: ModuleOptions)
         }
       }
       catch (error: unknown) {
-        console.error('Error reading documentation file:', error)
+        consola.error('Error reading documentation file:', error)
         return {
           content: [{
             type: 'text' as const,
@@ -163,7 +164,7 @@ export async function toolsDocs({ mcp }: McpToolContext, options: ModuleOptions)
         }
       }
       catch (error: unknown) {
-        console.error('Error reading documentation files:', error)
+        consola.error('Error reading documentation files:', error)
         return {
           content: [{
             type: 'text' as const,

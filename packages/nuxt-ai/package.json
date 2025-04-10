@@ -51,6 +51,7 @@
     "ansis": "catalog:prod",
     "async-cache-dedupe": "catalog:prod",
     "citty": "catalog:prod",
+    "consola": "catalog:prod",
     "debug": "catalog:prod",
     "giget": "catalog:prod",
     "pathe": "catalog:prod",
