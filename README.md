@@ -8,6 +8,10 @@
 
 > A collection of tools for adding AI capabilities to your Nuxt app.
 
+## Documentation
+
+- [Nuxt AI](https://nuxt-ai.josephanson.com/)
+
 ## Packages
 
 - [`@josephanson/nuxt-ai`](./packages/nuxt-ai) - A Nuxt module for adding AI capabilities to your Nuxt app.

@@ -8,6 +8,10 @@
 
 A Nuxt module for adding AI capabilities to your Nuxt app.
 
+## Documentation
+
+- [Nuxt AI](https://nuxt-ai.josephanson.com)
+
 ## Features
 
 - [x] Generate Nuxt rules from examples for different clients
