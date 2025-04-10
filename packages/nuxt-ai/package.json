@@ -1,7 +1,7 @@
 {
   "name": "@josephanson/nuxt-ai",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Excelerate your application development with AI.",
   "license": "MIT",
   "homepage": "https://github.com/josephanson/nuxt-ai#readme",
