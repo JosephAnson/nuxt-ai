@@ -9,7 +9,7 @@ const isDark = ref(theme.matches)
 
 // Lifecycle hooks for browser APIs
 onMounted(async () => {
-  §  // Event listeners
+  // Event listeners
   const handleThemeChange = (e: MediaQueryListEvent) => {
     isDark.value = e.matches
   }
@@ -18,22 +18,19 @@ onMounted(async () => {
   
   // Load data
   try {
-    const response = await fetch('/api/data')
-    const data = await response.json()
+    const { data } = await $fetch('/api/data')
     count.value = data.count
   } catch (error) {
     console.error('Failed to load data:', error)
   } finally {
     isLoading.value = false
   }
-  
- 
 })
 
  // Cleanup
- onUnmounted(() => {
-    theme.removeEventListener('change', handleThemeChange)
-  })
+onUnmounted(() => {
+  theme.removeEventListener('change', handleThemeChange)
+})
 
 // Computed properties
 const doubleCount = computed(() => count.value * 2)

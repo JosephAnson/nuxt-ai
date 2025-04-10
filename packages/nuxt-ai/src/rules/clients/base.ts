@@ -33,7 +33,7 @@ export abstract class BaseRuleClient implements RuleClient {
    * @param name Rule file name
    * @param content Formatted rule content
    */
-  abstract createRule(options: RuleOptions): Promise<void>
+  abstract createRule(options: RuleOptions | RuleOptions[]): Promise<void>
 
   /**
    * Format rule content according to client specifications

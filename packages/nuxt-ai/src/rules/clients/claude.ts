@@ -25,9 +25,17 @@ export class ClaudeRuleClient extends BaseRuleClient {
    * Formats and buffers a rule based on the given options.
    * @param options Rule options
    */
-  async createRule(options: RuleOptions): Promise<void> {
-    const content = this.formatContent(options)
-    this.rulesBuffer.push(content)
+  async createRule(options: RuleOptions | RuleOptions[]): Promise<void> {
+    if (Array.isArray(options)) {
+      for (const option of options) {
+        const content = this.formatContent(option)
+        this.rulesBuffer.push(content)
+      }
+    }
+    else {
+      const content = this.formatContent(options)
+      this.rulesBuffer.push(content)
+    }
   }
 
   /**

@@ -23,9 +23,17 @@ export class CursorRuleClient extends BaseRuleClient {
    * Create a rule with the given options
    * @param options Rule options
    */
-  async createRule(options: RuleOptions): Promise<void> {
-    const content = this.formatContent(options)
-    await this.writeFile(options.fileName, content)
+  async createRule(options: RuleOptions | RuleOptions[]): Promise<void> {
+    if (Array.isArray(options)) {
+      for (const option of options) {
+        const content = this.formatContent(option)
+        await this.writeFile(option.fileName, content)
+      }
+    }
+    else {
+      const content = this.formatContent(options)
+      await this.writeFile(options.fileName, content)
+    }
   }
 
   /**
