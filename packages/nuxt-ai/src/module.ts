@@ -23,10 +23,6 @@ export default defineNuxtModule<ModuleOptions>({
       },
       mcp: {
         enabled: true,
-        documentation: {
-          enabled: true,
-          path: '/docs',
-        },
       },
     },
   },
@@ -64,18 +60,6 @@ export default defineNuxtModule<ModuleOptions>({
       { name: 'zodToJsonSchema', from: 'ai' },
 
     ])
-
-    if (options.apiKeys) {
-      nuxt.options.runtimeConfig = nuxt.options.runtimeConfig || {}
-      if (!nuxt.options.runtimeConfig.ai) {
-        nuxt.options.runtimeConfig.ai = {}
-      }
-
-      Object.entries(options.apiKeys).forEach(([key, value]) => {
-        // @ts-expect-error - we know this is safe
-        nuxt.options.runtimeConfig.ai[key] = value
-      })
-    }
 
     if (options.devOptions?.rules?.enabled) {
       generateRules(nuxt, options)

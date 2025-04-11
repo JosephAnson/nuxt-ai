@@ -1,11 +1,9 @@
 <template>
-  <div>
-    Nuxt module playground!
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script setup>
-const { messages, input, handleSubmit } = useChat({
-  api: '/api/chat'
-})
+// No script needed here anymore as logic moved to pages/chat.vue
 </script>

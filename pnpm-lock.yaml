@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   ai:
+    '@ai-sdk/openai':
+      specifier: ^1.3.10
+      version: 1.3.10
     '@ai-sdk/vue':
       specifier: ^1.2.7
       version: 1.2.7
@@ -208,6 +211,9 @@ importers:
 
   .:
     devDependencies:
+      '@ai-sdk/openai':
+        specifier: catalog:ai
+        version: 1.3.10(zod@3.24.2)
       '@antfu/eslint-config':
         specifier: catalog:cli
         version: 4.11.0(@typescript-eslint/utils@8.29.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13)(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.1))
@@ -433,6 +439,12 @@ importers:
         version: 2.2.8(typescript@5.8.3)
 
 packages:
+
+  '@ai-sdk/openai@1.3.10':
+    resolution: {integrity: sha512-XO0wF2lmAMWCYjkM5bLpWTKoXet61fBiIimTi+blqEGiLUjAvivt/1zZL1Lzhrv9+p19IC1rn9EWZI1dCelV8w==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
 
   '@ai-sdk/provider-utils@2.2.6':
     resolution: {integrity: sha512-sUlZ7Gnq84DCGWMQRIK8XVbkzIBnvPR1diV4v6JwPgpn5armnLI/j+rqn62MpLrU5ZCQZlDKl/Lw6ed3ulYqaA==}
@@ -7764,6 +7776,12 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
+
+  '@ai-sdk/openai@1.3.10(zod@3.24.2)':
+    dependencies:
+      '@ai-sdk/provider': 1.1.2
+      '@ai-sdk/provider-utils': 2.2.6(zod@3.24.2)
+      zod: 3.24.2
 
   '@ai-sdk/provider-utils@2.2.6(zod@3.24.2)':
     dependencies:

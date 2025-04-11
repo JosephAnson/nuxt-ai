@@ -20,21 +20,6 @@ export type Documentation = Record<string, {
 
 export interface ModuleOptions {
   /**
-   * Module options for AI provider configuration
-   * These will be added to your Nuxt runtime config
-   *
-   * @example
-   * ```ts
-   * {
-   *   openaiApiKey: process.env.OPENAI_API_KEY,
-   *   anthropicApiKey: process.env.ANTHROPIC_API_KEY,
-   *   // Add any other provider API keys as needed
-   * }
-   * ```
-   */
-  apiKeys?: Record<string, string>
-
-  /**
    * Development-only options that are used during development
    */
   devOptions?: {
@@ -61,15 +46,9 @@ export interface ModuleOptions {
       enabled?: boolean
 
       /**
-       * Whether to run mcp server to help with creating documentation
-       */
-      documentation?: {
-        enabled?: boolean
-        path?: string
-      }
-
-      /**
-       * Additional documentation to add to the MCP server
+       * Additional documentation to add to the MCP server, we use the package 'giget' to download the documentation
+       *
+       * @example
        */
       additionalDocs?: Documentation
 

@@ -34,19 +34,9 @@ export default defineNuxtConfig({
   ],
   ai: {
     // Module options (e.g., Vercel AI provider config)
-    keys: {
-      openaiApiKey: process.env.OPENAI_API_KEY,
-    },
-    options: {
+    devOptions: {
       rules: true, // Default is true
-      mcp: {
-        documentation: {
-          enabled: true, // Default is true
-          path: '/docs'
-        }
-      }
     },
-    mcpServers: ['nuxt-ai-docs-mcp'] // Enabling tools from the plugin
   }
 })
 

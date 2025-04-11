@@ -17,6 +17,7 @@
   "exclude": [
     "**/good-examples",
     "**/bad-examples",
-    "docs"
+    "docs",
+    "**/playground"
   ]
 }

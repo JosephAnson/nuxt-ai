@@ -9,6 +9,7 @@
     "docs": "nuxi dev docs",
     "docs:build": "nuxi build docs",
     "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
     "inspect": "npx @modelcontextprotocol/inspector",
@@ -17,6 +18,7 @@
     "publish": "pnpm -r publish --access public"
   },
   "devDependencies": {
+    "@ai-sdk/openai": "catalog:ai",
     "@antfu/eslint-config": "catalog:cli",
     "@antfu/ni": "catalog:cli",
     "@antfu/utils": "catalog:utils",
