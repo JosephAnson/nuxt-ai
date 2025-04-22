@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   ],
   ai: {
     // Module options (e.g., Vercel AI provider config)
-    devOptions: {
+    dev: {
       rules: true, // Default is true
     },
   }
@@ -42,17 +42,6 @@ export default defineNuxtConfig({
 
 // Example: Using auto-imported composable
 const { messages, input, handleSubmit } = useChat();
-</example>
-
-<example type="invalid">
-// Missing module configuration or API keys
-export default defineNuxtConfig({
-  modules: ['@josephanson/nuxt-ai']
-  // Missing ai: { ... } block or required keys
-})
-
-// Manually importing SDK components when auto-import is available
-import { useChat } from '@ai-sdk/vue'; // Should be auto-imported
 </example>
 
 ## Critical Rules

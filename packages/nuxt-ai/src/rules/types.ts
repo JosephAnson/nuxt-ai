@@ -1,8 +1,4 @@
 /**
- * Common type definitions for AI rule generation
- */
-
-/**
  * Configuration options for an AI rule
  */
 export interface RuleOptions {

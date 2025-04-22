@@ -4,7 +4,8 @@
  * This module provides tools for generating AI assistant rules for different platforms.
  */
 
-import type { ModuleOptions, Nuxt } from '../types'
+import type { Nuxt } from '@nuxt/schema'
+import type { ModuleOptions } from '../types'
 
 import { createClientRuleGenerator } from './createClientRuleGenerator'
 import { generateAssetsRules } from './examples/assets'
@@ -29,7 +30,7 @@ export async function generateRules(
   nuxt: Nuxt,
   options: ModuleOptions,
 ): Promise<void> {
-  const generator = createClientRuleGenerator(nuxt, options?.devOptions?.client || 'cursor')
+  const generator = createClientRuleGenerator(nuxt, options?.dev?.client || 'cursor')
 
   await generator.ensureDirectory()
 

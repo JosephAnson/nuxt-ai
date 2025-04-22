@@ -55,6 +55,7 @@ catalogs:
     nitropack: ^2.11.8
     nuxi: ^3.24.1
     nuxt: ^3.16.2
+    nuxt-mcp: ^0.1.2
   prod:
     ansis: ^3.17.0
     async-cache-dedupe: ^2.2.0
@@ -68,7 +69,7 @@ catalogs:
     vite-plugin-mcp: ^0.1.0
     zod: ^3.24.2
   testing:
-    vitest: ^3.1.1
+    vitest: ^3.1.2
     vitest-package-exports: ^0.1.1
     yaml: ^2.7.1
   types:

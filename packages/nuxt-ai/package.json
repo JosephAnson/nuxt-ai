@@ -71,6 +71,7 @@
     "nitropack": "catalog:nuxt",
     "nuxi": "catalog:nuxt",
     "nuxt": "catalog:nuxt",
+    "nuxt-mcp": "catalog:nuxt",
     "typescript": "catalog:cli",
     "vitest": "catalog:testing",
     "vue-tsc": "catalog:cli"

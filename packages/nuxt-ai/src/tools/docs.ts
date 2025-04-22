@@ -1,4 +1,5 @@
-import type { McpToolContext, ModuleOptions } from '../types'
+import type { McpServer } from 'vite-plugin-mcp'
+import type { ModuleOptions } from '../types'
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { consola } from 'consola'
@@ -9,7 +10,7 @@ export type Documentation = Record<string, {
   url: string
 }>
 
-export async function toolsDocs({ mcp }: McpToolContext, options: ModuleOptions): Promise<void> {
+export async function toolsDocs({ mcp }: { mcp: McpServer }, options: ModuleOptions): Promise<void> {
   const docsMap: Documentation = {
     'nuxt': {
       url: 'github:nuxt/nuxt/docs#main',
@@ -26,7 +27,7 @@ export async function toolsDocs({ mcp }: McpToolContext, options: ModuleOptions)
     'nitro': {
       url: 'github:nitrojs/nitro/tree/v3/docs',
     },
-    ...options.devOptions?.mcp?.additionalDocs,
+    ...options.dev?.mcp?.additionalDocs,
   }
 
   // Helper function to download and get docs directory

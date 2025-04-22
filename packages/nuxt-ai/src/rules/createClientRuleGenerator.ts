@@ -1,4 +1,4 @@
-import type { Nuxt } from '../types'
+import type { Nuxt } from '@nuxt/schema'
 import type { BaseRuleClient } from './clients/base'
 import type { ClientType } from './types'
 import { join } from 'pathe'

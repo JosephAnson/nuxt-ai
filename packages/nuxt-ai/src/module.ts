@@ -1,14 +1,8 @@
-import type { Nitro } from 'nitropack'
-import type { Unimport } from 'unimport'
-import type { McpToolContext, ModuleOptions } from './types'
-import { addImports, addVitePlugin, defineNuxtModule } from '@nuxt/kit'
-import { ViteMcp } from 'vite-plugin-mcp'
-import { version } from '../package.json'
+import type { ModuleOptions } from '@nuxt/schema'
+import type { McpServer } from 'vite-plugin-mcp'
+import { addImports, defineNuxtModule, installModule } from '@nuxt/kit'
 import { generateRules } from './rules'
 import { toolsDocs } from './tools/docs'
-import { toolsNuxtDotComInfo } from './tools/nuxt-dot-com'
-import { toolsNuxtRuntime } from './tools/runtime'
-import { toolsScaffold } from './tools/scaffold'
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -16,7 +10,7 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'ai',
   },
   defaults: {
-    devOptions: {
+    dev: {
       client: 'cursor',
       rules: {
         enabled: true,
@@ -27,14 +21,8 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   async setup(options, nuxt) {
-    const unimport = promiseWithResolve<Unimport>()
-    const nitro = promiseWithResolve<Nitro>()
-
-    nuxt.hook('imports:context', (_unimport) => {
-      unimport.resolve(_unimport)
-    })
-    nuxt.hook('nitro:init', (_nitro) => {
-      nitro.resolve(_nitro)
+    await installModule('nuxt-mcp', {
+      exposeConfig: true,
     })
 
     addImports([
@@ -61,44 +49,14 @@ export default defineNuxtModule<ModuleOptions>({
 
     ])
 
-    if (options.devOptions?.rules?.enabled) {
+    if (options.dev?.rules?.enabled) {
       generateRules(nuxt, options)
     }
 
-    if (options.devOptions?.mcp?.enabled) {
-      addVitePlugin(ViteMcp({
-        port: nuxt.options.devServer.port,
-        updateCursorMcpJson: {
-          enabled: options?.devOptions?.client === 'cursor',
-          serverName: 'nuxt',
-        },
-        mcpServerInfo: {
-          name: 'nuxt',
-          version,
-        },
-        mcpServerSetup(mcp, vite) {
-          const context: McpToolContext = {
-            unimport: unimport.promise,
-            nitro: nitro.promise,
-            nuxt,
-            vite,
-            mcp,
-          }
-
-          toolsDocs(context, options)
-          toolsNuxtRuntime(context)
-          toolsNuxtDotComInfo(context)
-          toolsScaffold(context)
-        },
-      }), { client: true })
+    if (options.dev?.mcp?.enabled) {
+      nuxt.hook('mcp:setup' as any, ({ mcp }: { mcp: McpServer }) => {
+        toolsDocs({ mcp }, options)
+      })
     }
   },
 })
-
-function promiseWithResolve<T>(): { promise: Promise<T>, resolve: (value: T) => void } {
-  let resolve: (value: T) => void = undefined!
-  const promise = new Promise<T>((_resolve) => {
-    resolve = _resolve
-  })
-  return { promise, resolve }
-}
