@@ -27,6 +27,9 @@ export async function toolsDocs({ mcp }: { mcp: McpServer }, options: ModuleOpti
     'nitro': {
       url: 'github:nitrojs/nitro/tree/v3/docs',
     },
+    'nuxt-ai': {
+      url: 'github:josephanson/nuxt-ai/tree/main/docs',
+    },
     ...options.dev?.mcp?.additionalDocs,
   }
 
