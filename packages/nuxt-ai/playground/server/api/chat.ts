@@ -1,5 +1,4 @@
 import { createOpenAI } from '@ai-sdk/openai'
-import { streamText } from 'ai'
 
 export default defineLazyEventHandler(async () => {
   const apiKey = useRuntimeConfig().openaiApiKey
