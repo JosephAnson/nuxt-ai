@@ -54,6 +54,7 @@
     "consola": "catalog:prod",
     "debug": "catalog:prod",
     "giget": "catalog:prod",
+    "nuxt-mcp": "catalog:nuxt",
     "pathe": "catalog:prod",
     "unimport": "catalog:prod",
     "vite-plugin-mcp": "catalog:prod",
@@ -71,7 +72,6 @@
     "nitropack": "catalog:nuxt",
     "nuxi": "catalog:nuxt",
     "nuxt": "catalog:nuxt",
-    "nuxt-mcp": "catalog:nuxt",
     "typescript": "catalog:cli",
     "vitest": "catalog:testing",
     "vue-tsc": "catalog:cli"
