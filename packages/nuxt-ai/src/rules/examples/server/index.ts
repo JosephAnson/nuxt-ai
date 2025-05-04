@@ -12,7 +12,7 @@ export function generateServerRules(): RuleOptions {
     globs: '**/server/**/*.{ts,js}',
     context: `Rules for creating server-side functionality in Nuxt using h3.
 - API routes are auto-registered from server/api/
-- Middleware is auto-registered from server/middleware/
+- Server Middleware is not recommended as described in the nitro docs
 - Event handlers are registered from server/plugins/
 - File-based routing with support for dynamic parameters ([id].ts)
 - Method-specific handlers supported (users.get.ts, users.post.ts)`,
