@@ -27,7 +27,7 @@ export interface RuleOptions {
 /**
  * Supported AI client types
  */
-export type ClientType = 'cursor' | 'claude'
+export type ClientType = 'cursor' | 'claude' | 'windsurf'
 
 /**
  * Interface for client-specific rule formatters

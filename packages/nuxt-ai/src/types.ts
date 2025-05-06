@@ -12,7 +12,7 @@ export interface ModuleOptions {
      *
      * @default 'cursor'
      */
-    client?: 'cursor' | 'claude'
+    client?: 'cursor' | 'claude' | 'windsurf'
 
     /**
      * Whether to enable the MCP server for rules

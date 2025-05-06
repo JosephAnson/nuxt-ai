@@ -11,6 +11,8 @@
     "nuxt",
     "mcp",
     "cursor",
+    "claude",
+    "windsurf",
     "modelcontextprotocol"
   ],
   "sideEffects": false,
