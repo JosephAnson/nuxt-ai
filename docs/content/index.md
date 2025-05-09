@@ -67,7 +67,7 @@ Nuxt AI is a module for Nuxt that provides a simple way to integrate AI capabili
   AI Rules
 
   #description{unwrap="p"}
-  Pre-defined rules for AI assistants like Cursor and Claude to enhance development.
+  Pre-defined rules for AI assistants like Cursor, Windsurf and Claude to enhance development.
   :::
 
   :::u-page-feature

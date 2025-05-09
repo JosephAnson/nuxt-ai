@@ -2,7 +2,7 @@
   "type": "module",
   "version": "0.1.6",
   "private": true,
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "build": "pnpm -r run build",
     "dev": "pnpm -r run dev",
@@ -42,8 +42,8 @@
     "zod": "catalog:prod"
   },
   "resolutions": {
-    "@types/node": "22.14.1",
-    "vite": "6.3.2"
+    "@types/node": "22.15.17",
+    "vite": "6.3.5"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm i --frozen-lockfile --ignore-scripts --offline && npx lint-staged"

@@ -11,6 +11,12 @@ export function useNavLinks(): ComputedRef<{ label: string, icon: string, to: st
       active: route.path.startsWith('/docs/getting-started'),
     },
     {
+      label: 'AI SDK',
+      icon: 'i-lucide-cpu',
+      to: '/docs/ai-sdk',
+      active: route.path.startsWith('/docs/ai-sdk'),
+    },
+    {
       label: 'MCP Servers',
       icon: 'i-lucide-server',
       to: '/docs/mcp-server',
