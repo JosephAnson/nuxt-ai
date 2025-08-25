@@ -20,7 +20,7 @@ useHead({
   ],
   link: [
     { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
-    { rel: 'canonical', href: `https://content.nuxt.com${withoutTrailingSlash(route.path)}` },
+    { rel: 'canonical', href: `https://nuxt-ai.josephanson.com${withoutTrailingSlash(route.path)}` },
   ],
   htmlAttrs: {
     lang: 'en',
