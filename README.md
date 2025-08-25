@@ -6,7 +6,7 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-> A collection of tools for adding AI capabilities to your Nuxt app.
+> A module for Nuxt that provides a simple way to integrate AI capabilities into your application. It auto-imports the Vercel AI SDK, provides MCP server tools for development, and includes configurable AI assistant rules.
 
 ## Documentation
 

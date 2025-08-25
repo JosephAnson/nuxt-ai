@@ -92,10 +92,9 @@ export default defineNuxtConfig({
   llms: {
     domain: 'https://nuxt-ai.josephanson.com',
     title: 'Nuxt AI',
-    description: 'Nuxt AI is a Git-based headless CMS for Nuxt',
+    description: 'Nuxt AI is a module for Nuxt that provides a simple way to integrate AI capabilities into your application.',
     notes: [
-      'The documentation only includes Nuxt AI v3 docs.',
-      'The content is automatically generated from the same source as the official documentation.',
+      'The documentation is automatically generated from the same source as the official documentation.',
     ],
     full: {
       title: 'Complete Documentation',

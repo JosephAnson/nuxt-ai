@@ -27,12 +27,12 @@ useHead({
 })
 
 useSeoMeta({
-  titleTemplate: '%s - Nuxt UI v3',
+  titleTemplate: '%s - Nuxt AI',
   title: String(props.error.statusCode),
 })
 
 useServerSeoMeta({
-  ogSiteName: 'Nuxt UI',
+  ogSiteName: 'Nuxt AI',
   twitterCard: 'summary_large_image',
 })
 
